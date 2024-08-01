@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_07_184819) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_14_090817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_stat_statements"
@@ -144,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_184819) do
     t.string "link_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "google_event_id"
     t.index ["calendar_id"], name: "index_calendar_events_on_calendar_id"
   end
 
@@ -920,6 +921,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_07_184819) do
     t.bigint "organisation_id"
     t.string "discord_user_id"
     t.string "discord_tag"
+    t.string "goauth_token"
+    t.string "goauth_refresh_token"
+    t.datetime "goauth_expires_at"
     t.index ["api_token_digest"], name: "index_users_on_api_token_digest", unique: true
     t.index ["delete_account_token_digest"], name: "index_users_on_delete_account_token_digest", unique: true
     t.index ["discord_user_id"], name: "index_users_on_discord_user_id"

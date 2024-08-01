@@ -30,27 +30,5 @@
         <% end %>
       </div>
     <% end %>
-    <div class="max-w-sm mx-auto md:px-9">
-      <% if presenter.oauth_host.present? %>
-        <span
-          class="federated-signin-in__seperator block relative z-10 text-center text-xs text-gray-600 font-semibold"
-        >
-          <span class="bg-white px-2">
-            <%= t('.sign_in_options_separator') %>
-          </span>
-        </span>
-      <% end %>
-      <a
-        href="/users/sign_in_with_email"
-        class="flex justify-center items-center px-3 py-2 leading-snug border border-gray-300 text-primary-500 hover:bg-gray-50 hover:border-primary-500 focus:bg-gray-50 focus::border-primary-500 focus:outline-none rounded-lg cursor-pointer font-semibold mt-4 w-full"
-      >
-        <span class="w-1/5 ltr:text-right rtl:text-left text-lg">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="w-4/5 ps-3 ">
-          <%= t('.continue_with_email_link') %>
-        </span>
-      </a>
-    </div>
   </div>
 </div>

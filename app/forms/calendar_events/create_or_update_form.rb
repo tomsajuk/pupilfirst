@@ -9,8 +9,8 @@ module CalendarEvents
                   :calendar_id,
                   :color,
                   :start_time,
-                  :link_url,
-                  :link_title
+                  :end_time,
+                  :google_event_id
 
     validates :title,
               presence: {
@@ -34,9 +34,16 @@ module CalendarEvents
                     'calendar_events.create_or_update_form.start_time_error'
                   )
               }
+    validates :end_time,
+              presence: {
+                message:
+                  I18n.t(
+                    'calendar_events.create_or_update_form.end_time_error'
+                  )
+              }
 
     validate :start_time_is_valid
-    validate :link_url_is_valid
+    validate :end_time_is_valid
 
     def start_time_is_valid
       begin
@@ -55,15 +62,19 @@ module CalendarEvents
       end
     end
 
-    def link_url_is_valid
-      return if link_url.blank?
-
+    def end_time_is_valid
       begin
-        URI.parse(link_url)
+        time = Time.zone.parse(end_time)
+        if time.blank?
+          errors.add(
+            :base,
+            I18n.t('calendar_events.create_or_update_form.end_time_error')
+          )
+        end
       rescue StandardError
         errors.add(
           :base,
-          I18n.t('calendar_events.create_or_update_form.invalid_url')
+          I18n.t('calendar_events.create_or_update_form.end_time_error')
         )
       end
     end
@@ -78,8 +89,8 @@ module CalendarEvents
         calendar_id: calendar_id,
         color: color,
         start_time: start_time,
-        link_url: link_url,
-        link_title: link_title
+        end_time: end_time,
+        google_event_id: google_event_id
       }
       calendar_event.save!
       calendar_event

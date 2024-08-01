@@ -249,7 +249,8 @@ Devise.setup do |config|
                   ENV['GOOGLE_OAUTH2_CLIENT_ID'],
                   ENV['GOOGLE_OAUTH2_CLIENT_SECRET'],
                   verify_iss: false,
-                  prompt: 'select_account'
+                  prompt: 'consent',
+                  scope: 'email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar'
   config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
   if Rails.application.secrets.sso[:discord][:key].present?

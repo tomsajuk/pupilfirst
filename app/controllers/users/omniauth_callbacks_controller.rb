@@ -87,6 +87,7 @@ module Users
     def sign_in_at_oauth_origin
       if user.present?
         user.regenerate_login_token
+        user.save_google_auth_token(auth_hash)
 
         encrypted_token =
           EncryptorService.new.encrypt(

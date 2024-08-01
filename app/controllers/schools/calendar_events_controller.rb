@@ -33,6 +33,10 @@ module Schools
       @form.validate
 
       if @form.valid?
+        students = get_student_emails_of_course(@course)
+        google_calender_id = GoogleCalenderService.new(current_user).create_event(calendar_event_params(params), students)
+        @form.google_event_id = google_calender_id
+
         @form.save
         flash[:success] = I18n.t("calendar_events.create.success")
         redirect_to school_course_calendar_events_path(
@@ -58,6 +62,10 @@ module Schools
       @form.validate
 
       if @form.valid?
+        if (@event.google_event_id?)
+          GoogleCalenderService.new(current_user).update_event(@event.google_event_id, calendar_event_params(params))
+        end
+
         @form.save
         flash[:success] = I18n.t("calendar_events.update.success")
         redirect_to school_course_calendar_event_path(
@@ -74,6 +82,9 @@ module Schools
     def destroy
       @event = current_school.calendar_events.find(params[:id])
       authorize(@event, policy_class: Schools::CalendarEventPolicy)
+      if @event.google_event_id?
+        GoogleCalenderService.new(current_user).delete_event(@event.google_event_id)
+      end
       @event.destroy
 
       flash[:success] = I18n.t("calendar_events.delete.success")
@@ -92,9 +103,13 @@ module Schools
         :calendar_id,
         :color,
         :start_time,
-        :link_url,
-        :link_title
+        :end_time,
       )
+    end
+
+    def get_student_emails_of_course(course)
+      user_ids = Student.joins(:course).where({ courses: { id: course.id }}).pluck(:user_id)
+      User.where(id: user_ids).pluck(:email)
     end
   end
 end

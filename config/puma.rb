@@ -15,7 +15,7 @@ worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port ENV.fetch('PORT') { 3000 }
+# port ENV.fetch('PORT') { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
@@ -41,3 +41,12 @@ workers ENV.fetch('WEB_CONCURRENCY') { 0 }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
+
+# Add your ssl certs here. Uncomment if not required
+cert_key = "#{File.join('config', 'certs', 'key.pem')}"
+cert_crt = "#{File.join('config', 'certs', 'server.crt')}"
+
+ssl_bind '0.0.0.0', 11000, {
+    key: cert_key,
+    cert: cert_crt,
+}

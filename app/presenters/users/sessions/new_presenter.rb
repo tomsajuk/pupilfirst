@@ -22,11 +22,7 @@ module Users
       end
 
       def providers
-        default_providers = %i[google facebook github]
-
-        if Rails.application.secrets.sso[:discord][:key].present?
-          default_providers = default_providers + [:discord]
-        end
+        default_providers = %i[google]
 
         if Rails.env.development?
           [:developer] + default_providers

@@ -3,6 +3,7 @@ class CalendarEvent < ApplicationRecord
 
   validates :title, presence: true
   validates :start_time, presence: true
+  validates :end_time, presence: true
   validate :ends_at_is_after_starts_at
   validates_with RateLimitValidator,
                  limit: 100,
@@ -12,7 +13,7 @@ class CalendarEvent < ApplicationRecord
   def ends_at_is_after_starts_at
     return if end_time.blank? || start_time.blank?
 
-    errors.add(:ends_at, "must be after starts_at") if ends_at <= starts_at
+    errors.add(:end_time, "must be after starts_time") if end_time <= start_time
   end
 
   enum color: {
