@@ -250,7 +250,8 @@ Devise.setup do |config|
                     Settings.sso.google.client_id,
                     Settings.sso.google.client_secret,
                     verify_iss: false,
-                    prompt: "select_account"
+                    prompt: "consent"
+                    scope: "email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar"
   end
 
   if Settings.sso.github.key.present?

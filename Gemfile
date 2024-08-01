@@ -59,6 +59,9 @@ gem "omniauth-facebook", "~> 9.0" # Facebook OAuth2 Strategy for OmniAuth.
 gem "omniauth-github", "~> 2.0" # GitHub OAuth2 Strategy for OmniAuth.
 gem "omniauth-discord", "~> 1.0" # Discord OAuth2 Strategy for OmniAuth.
 
+# google calender
+gem 'google-apis-calendar_v3', '~> 0.41.0'
+
 gem "file_validators", "~> 3.0" # Adds file validators to ActiveModel.
 gem "pundit", "~> 2.3" # Minimal authorization through OO design and pure Ruby classes.
 gem "rack-cors", "~> 2.0", require: "rack/cors" # Rack Middleware for handling CORS, required to serve static assets such as fonts

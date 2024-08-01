@@ -1,3 +1,8 @@
+Note:
+Modified for our case.
+Added Google Calender Integration for the Calender Invites.
+Removed all the other OAuth.
+
 ## [![Pupilfirst Logo](https://public-assets.sv.co/random/201908/pupilfirst-logo-300px.png "Pupilfirst Logo")](https://lms.pupilfirst.org)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-informational)](https://github.com/pupilfirst/pupilfirst/blob/master/LICENSE)

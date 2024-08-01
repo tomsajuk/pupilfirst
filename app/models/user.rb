@@ -80,6 +80,17 @@ class User < ApplicationRecord
 
   scope :with_email, ->(email) { where("lower(email) = ?", email.downcase) }
 
+  # TODO: Maybe not save it here but somewhere encrypted
+  def save_google_auth_token(auth)
+    Rails.logger.info("Saving Google auth token for #{email}. Expires at: #{Time.at(auth.credentials.expires_at)}")
+    update!(
+      goauth_token: auth.credentials.token,
+      goauth_refresh_token: auth.credentials.refresh_token,
+      goauth_expires_at: Time.at(auth.credentials.expires_at)
+    )
+  end
+
+
   before_save :capitalize_name_fragments
 
   def capitalize_name_fragments
@@ -94,6 +105,7 @@ class User < ApplicationRecord
         end
         .join(" ")
   end
+
 
   attr_reader :delete_account_token_original
   attr_reader :api_token

@@ -23,7 +23,8 @@ en:
       calendar_error: Please select a calendar from the list
       color_error: Please select a valid color for the event
       invalid_url: Please enter a valid URL for the event
-      start_time_error: Please select a valid time for the event
+      start_time_error: Please select a valid start time for the event
+      end_time_error: Please select a valid end time for the event
       title_error: Please enter a valid title for the event
     delete:
       success: Event deleted successfully!
@@ -2733,7 +2734,8 @@ en:
         link_title_placeholder: eg. Google Meet
         link_url_label: Event link URL
         link_url_placeholder: eg. https://meet.google.com/xxx-yyyy-zzz
-        start_time_label: Date and Time
+        start_time_label: Start Date and Time
+        end_time_label: End Date and Time
         title_label: Event Title
         title_placeholder: eg. Group Discussion
         update_event_button: Update event
