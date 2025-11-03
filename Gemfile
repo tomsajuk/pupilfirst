@@ -22,7 +22,7 @@ gem "activerecord-precounter", "~> 0.4" # N+1 count query optimizer for ActiveRe
 gem "turbolinks", "~> 5.2" # Quicker page navigation. https://github.com/turbolinks/turbolinks
 gem "rest-client", "~> 2.1" # Used to contact Fast Alerts' API.
 gem "valid_url", "= 0.0.4", github: "ralovets/valid_url" # URL validation: https://github.com/ralovets/valid_url
-gem "puma", "~> 5.6" # Use the Puma web server [https://github.com/puma/puma]
+gem "puma", "~> 7.1" # Use the Puma web server [https://github.com/puma/puma]
 gem "slowpoke", "~> 0.5.0" # Rack::Timeout enhancements for Rails. https://github.com/ankane/slowpoke
 gem "delayed_job_active_record", "~> 4.1" # Delayed Job for deferring tasks.
 gem "delayed-web", "~> 0.4" # A rails engine that provides a simple web interface for exposing the Delayed::Job queue.
@@ -60,7 +60,7 @@ gem "omniauth-github", "~> 2.0" # GitHub OAuth2 Strategy for OmniAuth.
 gem "omniauth-discord", "~> 1.0" # Discord OAuth2 Strategy for OmniAuth.
 
 # google calender
-gem 'google-apis-calendar_v3', '~> 0.41.0'
+gem 'google-apis-calendar_v3', '~> 0.48.0'
 
 gem "file_validators", "~> 3.0" # Adds file validators to ActiveModel.
 gem "pundit", "~> 2.3" # Minimal authorization through OO design and pure Ruby classes.

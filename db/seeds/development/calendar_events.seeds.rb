@@ -14,6 +14,11 @@ after 'development:calendars' do
             from: DateTime.now + 1.day,
             to: DateTime.now + 10.days
           ),
+        end_time:
+          Faker::Time.between(
+            from: DateTime.now + 11.days,
+            to: DateTime.now + 20.days
+          ),
         link_url: Faker::Internet.url,
         link_title: Faker::Lorem.words(number: 3).join(' ')
       )
